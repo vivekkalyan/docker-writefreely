@@ -5,10 +5,12 @@ ARG WRITEFREELY_RELEASE=0.11.2
 RUN \
  echo "**** install runtime packages ****" && \
  apk add --no-cache --upgrade \
-     curl \
+     tar \
+     curl && \
  echo "**** download writefreely ****" && \
- curl -o /app/writefreely.tar.bz2 -L \
-    https://github.com/writeas/writefreely/releases/download/v${WRITEFREELY_RELEASE}/writefreely_${WRITEFREELY_RELEASE}_linux_amd64.tar.gz | tar -C / -xzf - && \
+ curl -o /app/writefreely.tar.gz -L \
+    https://github.com/writeas/writefreely/releases/download/v${WRITEFREELY_RELEASE}/writefreely_${WRITEFREELY_RELEASE}_linux_amd64.tar.gz && \
+ tar xzf /app/writefreely.tar.gz
 
 COPY bin/writefreely-docker.sh /writefreely/
 
