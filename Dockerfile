@@ -11,10 +11,11 @@ FROM debian:stable-slim AS production
 
 COPY --from=build /writefreely /writefreely
 COPY bin/writefreely-docker.sh /writefreely/
+COPY config-template.ini /writefreely/
 
 WORKDIR /writefreely
 VOLUME /data
 EXPOSE 8080
 
-ENTRYPOINT ["/bin/bash"]
-# ENTRYPOINT ["/writefreely/writefreely-docker.sh"]
+# ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/writefreely/writefreely-docker.sh"]
