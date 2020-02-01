@@ -1,3 +1,4 @@
+#!/bin/sh
 cd /data
 
 WRITEFREELY=/writefreely/writefreely
